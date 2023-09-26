@@ -34,6 +34,18 @@ hdf5_exclude = ['detection/sky_centroid']
 
 def detect_sources(detection_image, parameters = default_parameters, naive_threshold = False):
 
+    """
+    Function to detect sources 
+
+    Arguments:
+    
+
+
+    """
+
+    
+    
+
     if parameters['smooth']:
         smooth_sigma = parameters['smooth']['smooth_fwhm'] * gaussian_fwhm_to_sigma
         smooth_kernel = Gaussian2DKernel(smooth_sigma, x_size = parameters['smooth']['kernel_size'], y_size = parameters['smooth']['kernel_size'])
@@ -57,6 +69,11 @@ def detect_sources(detection_image, parameters = default_parameters, naive_thres
 
 def detect_sources_method(self, detection_image):
 
+    """
+    This should be moved to the Image class since that's where it is applied.
+    """
+
+    
     self.detection_image = detection_image
 
     self.detection_cat, self.segm_deblended = detect_sources(self.detection_image, parameters = self.parameters)
