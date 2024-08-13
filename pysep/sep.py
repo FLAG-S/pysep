@@ -35,18 +35,19 @@ hdf5_exclude = ['detection/sky_centroid']
 def detect_sources(detection_image, parameters = default_parameters, naive_threshold = False):
 
     """
-    Function to detect sources 
+    Function to detect sources in a provided detection image.
 
     Arguments:
-    
-
-
+        detection_image (image.Image object)
+            The detection image, an instance of image.Image.
+        parameters (dict)
+            A dictionary of the relevant parameters. See above for defaults.
     """
 
-    
-    
-
     if parameters['smooth']:
+        """
+        If smoothing is requested smooth the data using a Gaussian2DKernal.
+        """
         smooth_sigma = parameters['smooth']['smooth_fwhm'] * gaussian_fwhm_to_sigma
         smooth_kernel = Gaussian2DKernel(smooth_sigma, x_size = parameters['smooth']['kernel_size'], y_size = parameters['smooth']['kernel_size'])
         smooth_kernel.normalize()
